@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfreds Zinsrechnung-Trainer</title>
+    <style>
+        /* ============================================
+           WICHTIG: Session-Check Script
+           Dieses Script muss am Anfang der Seite bleiben!
+           ============================================ */
+    </style>
+</head>
+<body>
+    <!-- Session-Check: Leitet nicht-eingeloggte Benutzer zurück zur Login-Seite -->
+    <script>
+        (function() {
+            const SESSION_KEY = 'alfred_mathe_session';
+            const session = localStorage.getItem(SESSION_KEY);
+            
+            if (!session) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            const sessionData = JSON.parse(session);
+            const now = new Date().getTime();
+            
+            if (now >= sessionData.expiry) {
+                localStorage.removeItem(SESSION_KEY);
+                window.location.href = 'index.html';
+                return;
+            }
+        })();
+    </script>
+
+    <!-- ============================================
+         AB HIER DEINEN TRAINER-CODE EINFÜGEN
+         
+         ANLEITUNG:
+         1. Öffne deine "Zinsrechnung_Trainer_Alfred.html"
+         2. Kopiere ALLES aus dem <body>-Tag (ohne <body> und </body> selbst)
+         3. Füge es hier unten ein
+         4. Falls dein Trainer eigene <style>-Tags hat, kopiere diese in den <head> oben
+         ============================================ -->
+
+    <!-- PLATZHALTER - ERSETZE DIES MIT DEINEM TRAINER-INHALT -->
+    <div style="font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; text-align: center;">
+        <h1 style="color: #1e3c72;">🎓 Alfreds Zinsrechnung-Trainer</h1>
+        <p style="color: #666; font-size: 1.2em;">Platzhalter - Hier kommt dein Trainer-Inhalt hin!</p>
+        
+        <div style="background: #e8f4fc; padding: 20px; border-radius: 10px; margin-top: 30px;">
+            <p><strong>Anleitung:</strong></p>
+            <p>Ersetze diesen Inhalt mit dem Inhalt deiner "Zinsrechnung_Trainer_Alfred.html"</p>
+        </div>
+        
+        <button onclick="logout()" style="margin-top: 30px; padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em;">
+            🚪 Abmelden
+        </button>
+    </div>
+
+    <script>
+        // Logout-Funktion (optional - kann auch entfernt werden)
+        function logout() {
+            localStorage.removeItem('alfred_mathe_session');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
